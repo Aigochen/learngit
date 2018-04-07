@@ -1,0 +1,42 @@
+1、Git安装后设置用户名和地址
+	git config --global user.name "Your name"
+	git config --global user.email "email@example.com"
+2、Git仓库建立
+	mkdir learngit	创建空目录learngit
+	cd learngit	更改路径，进入learngit文件夹
+	cd ..	进入文件夹上一层
+	pwd	显示当前目录
+	git init	将当前目录文件变为Git可以管理的仓库
+3、添加文件
+	git add readme.txt	添加文件到仓库（一次添加一个）
+	git commit -m "wrote a readme file" 	文件提交到仓库（一次提交多个）
+		-m 后面为本次提交说明，方便从历史记录里找到改动记录
+	新文件只保存， 没有添加和提交，git status显示 untracked状态，未被追踪
+	工作区：learngit/ 	版本库: /.git	版本库包含暂存区：Stage		Stage包含master分支，有一个指向master的指针HEAD
+	git add 把要提交的所有修改放到暂存区（Stage),
+	git commit 一次性把暂存区的所有修改提交到分支
+	git diff    #是工作区(work dict)和暂存区(stage)的比较
+
+4、时光穿梭
+	git status	查看仓库当前状态
+	git diff	查看修改信息
+	git log		查看提交的历史记录
+	git reset --hard commit_id	在历史版本中穿梭
+		commit id	对应版本id
+		HEAD	当前版本
+		HEAD^	上一个版本，HEAD^上上一个版本
+		HEAD~100	往上第100个版本
+	git log	查看提交历史，以便确定要退回哪个版本
+	git reflog	查看命令历史和commit id 以便确定要回到未来哪个版本
+	git checkout -- readme.txt 撤回工作区和暂存区的修改
+		一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+		git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+		命令中-- 很重要，没有它，就变成了“切换到另一个分支”的命令
+	git reset HEAD file	暂存区的修改撤销掉（unstage），重新放回工作区,HEAD表示最新版本。
+		一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+		
+5、github教程
+	要关联一个远程库，使用命令git remote add origin git@github.com:acount_name/repository_name.git；
+	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+	此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+		
