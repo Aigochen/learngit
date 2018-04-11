@@ -6,3 +6,4 @@ Git has a mutable index called stage.
 append to work stage1.
 Creating a new branch is quick and simple.
 forbidden the fast forward
+04:11
